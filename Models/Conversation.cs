@@ -13,8 +13,8 @@ namespace ChatHistory.Models
         [BsonElement("title"), BsonRepresentation(BsonType.String)]
         public required string title { get; set; }
 
-        [BsonElement("messages"),BsonRepresentation(BsonType.Array)]
-        public List<Message> Messages { get; set; } = new();
+        [BsonElement("messages")]
+        public List<Message> Messages { get; set; } = [];
 
     }
 

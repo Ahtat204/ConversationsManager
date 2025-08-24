@@ -1,6 +1,9 @@
 global using ChatHistory.Models;
 global using ChatHistory.Services;
 global using DBSettings = ChatHistory.ChatBotConversationDataBaseSettings;
+using ChatHistory.Repositories;
+using MongoDB.Driver;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +15,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<DBSettings>(builder.Configuration.GetSection("ChatBotConversationsDataBase"));
-
+builder.Services.AddScoped<IConversationService, ConversationService>();
+builder.Services.AddScoped<IConversationRepository, ConversationRepository>();
+builder.Services.AddSingleton<MongoDbService>();
 
 //builder.Services.AddSingleton<MongoDbService>();
 
