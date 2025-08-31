@@ -37,9 +37,10 @@ namespace ChatHistory.Controllers
         /// </returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<List<Conversation>> GetAllConversations()
+        public async Task<ActionResult<List<Conversation>>> GetAllConversations()
         {
-            return await _conversationService.GetAllConversationsAsync();
+            var conversations= await _conversationService.GetAllConversationsAsync();
+            return Ok(conversations);
         }
 
         /// <summary>
@@ -52,9 +53,10 @@ namespace ChatHistory.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<Conversation> GetConversationById(string id)
+        public async Task<ActionResult> GetConversationById(string id) 
         {
-            return await _conversationService.GetConversationByIdAsync(id);
+            var conversation= await _conversationService.GetConversationByIdAsync(id);
+            return Ok(conversation);
         }
 
         /// <summary>
@@ -64,9 +66,10 @@ namespace ChatHistory.Controllers
         /// <returns>The created <see cref="Conversation"/> object.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<Conversation> CreateConversation(Conversation conversation)
+        public async Task<ActionResult> CreateConversation(Conversation conversation)
         {
-            return await _conversationService.CreateConversationAsync(conversation);
+            var conv = await _conversationService.CreateConversationAsync(conversation);
+            return CreatedAtAction(nameof(GetConversationById), new { id = conv.Id }, conv);
         }
 
         /// <summary>
@@ -78,9 +81,10 @@ namespace ChatHistory.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<Conversation> UpdateConversation(string id, Conversation conversation)
+        public async Task<ActionResult> UpdateConversation(string id, Conversation conversation)
         {
-            return await _conversationService.UpdateConversationAsync(id, conversation);
+             var updatedConv =await _conversationService.UpdateConversationAsync(id, conversation);
+             return Ok(updatedConv);
         }
 
         /// <summary>
@@ -91,7 +95,7 @@ namespace ChatHistory.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<string> DeleteConversation(string id)
+        public async Task<ActionResult<string>> DeleteConversation(string id)
         {
             return await _conversationService.DeleteConversationAsync(id);
         }

@@ -8,7 +8,7 @@ namespace ChatHistory.Models
     {
         [BsonId]
         [BsonElement("_id"),BsonRepresentation(BsonType.ObjectId)]
-        public required string Id { get; set; }
+        public  string Id { get; set; }
 
         [BsonElement("title"), BsonRepresentation(BsonType.String)]
         public required string title { get; set; }

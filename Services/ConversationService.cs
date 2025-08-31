@@ -8,7 +8,7 @@ namespace ChatHistory.Services
     /// Service class responsible for handling business logic related to <see cref="Conversation"/>.
     /// Delegates CRUD operations to the injected <see cref="IConversationRepository"/>.
     /// </summary>
-    internal class ConversationService : IConversationService
+    public class ConversationService : IConversationService
     {
         /// <summary>
         /// Repository used to perform database operations for conversations.
