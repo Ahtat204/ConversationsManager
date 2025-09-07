@@ -1,4 +1,4 @@
-﻿namespace ChatHistory
+﻿namespace ChatHistory.ChatHistoryAPI
 {
     public class ChatBotConversationDataBaseSettings
     {

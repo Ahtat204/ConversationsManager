@@ -1,9 +1,8 @@
-global using ChatHistory.Models;
-global using ChatHistory.Services;
-global using DBSettings = ChatHistory.ChatBotConversationDataBaseSettings;
-using ChatHistory.Repositories;
-using MongoDB.Driver;
-using Microsoft.Extensions.Options;
+global using ChatHistory.ChatHistoryAPI.Models;
+global using ChatHistory.ChatHistoryAPI.Services;
+global using DBSettings = ChatHistory.ChatHistoryAPI.ChatBotConversationDataBaseSettings;
+using ChatHistory.ChatHistoryAPI.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 

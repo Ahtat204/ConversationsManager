@@ -8,5 +8,10 @@ namespace ChatHistoryTest.Controllers
 {
     public class ConversationControllerTest
     {
+        [Fact]
+        public async void GetConversationByIdReturnConversation()
+        {
+           
+        }
     }
 }
