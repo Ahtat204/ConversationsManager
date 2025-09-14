@@ -1,6 +1,4 @@
-﻿using ChatHistory.ChatHistoryAPI.Models;
-
-namespace ChatHistory.ChatHistoryAPI.Repositories;
+﻿namespace ChatHistory.ChatHistoryAPI.Repositories;
 
 /// <summary>
 /// Defines the contract for performing CRUD operations

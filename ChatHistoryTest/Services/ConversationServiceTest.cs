@@ -1,8 +1,7 @@
-﻿using ChatHistory.ChatHistoryAPI.Services;
-using Moq;
-using ChatHistory.ChatHistoryAPI.Models;
+﻿using ChatHistory.ChatHistoryAPI.Models;
 using ChatHistory.ChatHistoryAPI.Repositories;
-using Xunit;
+using ChatHistory.ChatHistoryAPI.Services;
+using Moq;
 using Xunit.Abstractions;
 
 namespace ChatHistoryTest.Services;

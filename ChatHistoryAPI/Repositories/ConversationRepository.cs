@@ -1,6 +1,4 @@
-﻿using ChatHistory.ChatHistoryAPI.Models;
-using ChatHistory.ChatHistoryAPI.Services;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace ChatHistory.ChatHistoryAPI.Repositories;
 
@@ -16,7 +14,7 @@ internal class ConversationRepository : IConversationRepository
     /// </summary>
     private readonly IMongoCollection<Conversation> _conversation;
 
-    /// <summary>
+    /// <summary>2
     /// Initializes a new instance of the <see cref="ConversationRepository"/> class.
     /// Sets up the repository to use the provided <see cref="MongoDbService"/> for database access.
     /// </summary>
@@ -51,7 +49,7 @@ internal class ConversationRepository : IConversationRepository
     /// <returns>A list of all <see cref="Conversation"/> objects.</returns>
     public async Task<List<Conversation>> GetAllConversationsAsync()
     {
-        return await _conversation.Find(_c => true).ToListAsync();
+        return await _conversation.Find(c => true).ToListAsync();
     }
 
     /// <summary>

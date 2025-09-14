@@ -1,6 +1,4 @@
-﻿using ChatHistory.ChatHistoryAPI.Models;
-
-namespace ChatHistory.ChatHistoryAPI.Services;
+﻿namespace ChatHistory.ChatHistoryAPI.Services;
 
 /// <summary>
 /// Defines the contract for conversation-related business logic.

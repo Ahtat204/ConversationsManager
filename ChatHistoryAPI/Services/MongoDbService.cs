@@ -1,5 +1,4 @@
-﻿using ChatHistory.ChatHistoryAPI.Models;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 
@@ -41,7 +40,6 @@ internal sealed class MongoDbService
     {
         _dbSettings = dbsettings?.Value
             ?? throw new ArgumentNullException(nameof(dbsettings), "Database settings cannot be null.");
-
         var mongoClient = new MongoClient(_dbSettings.ConnectionString);
         _database = mongoClient.GetDatabase(_dbSettings.DatabaseName);
         _conversation = _database.GetCollection<Conversation>(_dbSettings.CollectionName);

@@ -1,7 +1,4 @@
-﻿using ChatHistory.ChatHistoryAPI.Models;
-using ChatHistory.ChatHistoryAPI.Repositories;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+﻿using ChatHistory.ChatHistoryAPI.Repositories;
 
 namespace ChatHistory.ChatHistoryAPI.Services;
 

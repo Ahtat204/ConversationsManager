@@ -1,14 +1,19 @@
-﻿using MongoDB.Bson;
+﻿using System.ComponentModel.DataAnnotations;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Collections.Generic;
 
 namespace ChatHistory.ChatHistoryAPI.Models;
 
+
+/// <summary>
+/// 
+/// </summary>
 public class Conversation
 {
+    
     [BsonId]
-    [BsonElement("_id"),BsonRepresentation(BsonType.ObjectId)]
-    public  string Id { get; set; }
+    [BsonElement("_id"), BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }=string.Empty;
 
     [BsonElement("title"), BsonRepresentation(BsonType.String)]
     public required string title { get; set; }
