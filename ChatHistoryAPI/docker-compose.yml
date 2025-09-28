@@ -1,0 +1,35 @@
+﻿version: "3.9"
+
+services:
+  chatapi:
+    image: "chatapi:latest"
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_CONNECTION=mongodb://mongodb:27017
+      - ASP.NETCORE_URLS=https://+:80
+      - ASP.NETCORE_ENVIRONMENT=Development
+      - MongoDB__DatabaseName=ChatBotConversations
+      - MongoDB__CollectionName=Conversation
+    networks:
+      - app-network
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+    
+networks:
+  app-network:

@@ -6,7 +6,7 @@ using Moq;
 using Xunit.Abstractions;
 
 
-namespace ChatHistoryTest.Controllers;
+namespace ChatHistory.ChatHistoryTest.Controllers;
 
 /// <summary>
 /// Unit tests for <see cref="ChatHistoryController"/> 
@@ -151,7 +151,7 @@ public class ConversationControllerTest
     }
 
     [Fact]
-    public async Task CreateConversation_ReturnsBadRequestWhenConversationIsNull()
+    public async Task CreateConversation_ReturnsBadRequestWhenTitleIsNull()
     {
         var conversation = new Conversation  { 
             Id = "102034",
@@ -164,8 +164,31 @@ public class ConversationControllerTest
         };
         _mockConversationService.Setup(serv => serv.CreateConversationAsync(It.IsAny<Conversation>())).ReturnsAsync(conversation);
         var result = await _controller.CreateConversation(conversation);
-        var badRequestResult = Assert.IsType<BadRequestResult>(result));
+        var badRequestResult = Assert.IsType<BadRequestResult>(result);
     }
+
+    [Fact]
+public async Task UpdateTask_ReturnsBadRequestWhenIdIsNull()
+{ 
+    var conversation = new Conversation  
+    { 
+        Id = "102034",
+        title = "title", 
+        Messages =
+        [
+            new(sender: Sender.USER, content: "Hello, how are you?"),
+            new(sender: Sender.BOT, content: "I'm good, thank you!, how can I help you")
+        ]
+    };
+    string? id = null;
+    _mockConversationService
+        .Setup(serv => serv.UpdateConversationAsync(id, It.IsAny<Conversation>()))
+        .ReturnsAsync((Conversation?)null);
+    var result = await _controller.UpdateConversation(id, conversation);
+    var badRequestResult = Assert.IsType<BadRequestResult>(result.Result);
+}
+
+    
     #endregion
 
 }

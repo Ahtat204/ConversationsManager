@@ -16,10 +16,10 @@ public class Conversation
     public string Id { get; set; }=string.Empty;
 
     [BsonElement("title"), BsonRepresentation(BsonType.String)]
-    public required string title { get; set; }
+    public required string? title { get; set; }
 
     [BsonElement("messages")]
-    public List<Message> Messages { get; set; } = [];
+    public List<Message>? Messages { get; set; } = [];
 
 }
 

@@ -4,7 +4,7 @@ using ChatHistory.ChatHistoryAPI.Services;
 using Moq;
 using Xunit.Abstractions;
 
-namespace ChatHistoryTest.Services;
+namespace ChatHistory.ChatHistoryTest.Services;
 
 /// <summary>
 /// Unit tests for the <see cref="ConversationService"/> class.

@@ -69,6 +69,7 @@ public class ChatHistoryController : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> CreateConversation(Conversation conversation)
     {
+        if(conversation.title is null || conversation.Messages is null) return BadRequest();
         var conv = await _conversationService.CreateConversationAsync(conversation);
         return CreatedAtAction(nameof(GetConversationById), new { id = conv.Id }, conv);
     }
@@ -81,8 +82,9 @@ public class ChatHistoryController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Conversation>> UpdateConversation(string id, Conversation conversation)
+    public async Task<ActionResult<Conversation>> UpdateConversation(string? id, Conversation conversation)
     {
+        if(id is null) return BadRequest();
         var updatedConv = await _conversationService.UpdateConversationAsync(id, conversation);
         return Ok(updatedConv);
     }
