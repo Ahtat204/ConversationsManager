@@ -1,6 +1,7 @@
 global using ChatHistory.ChatHistoryAPI.Models;
 global using ChatHistory.ChatHistoryAPI.Services;
 global using DBSettings = ChatHistory.ChatHistoryAPI.ChatBotConversationDataBaseSettings;
+using ChatHistory.ChatHistoryAPI.Authentication;
 using ChatHistory.ChatHistoryAPI.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -21,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+app.UseMiddleware<ApiKeyAuthMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

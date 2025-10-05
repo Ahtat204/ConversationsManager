@@ -28,11 +28,15 @@ The backend exposes endpoints to create, retrieve, and manage conversations.
 The service interacts with MongoDB via the connection string provided in the configuration.
 
 Example
+
+"Authentication":{
+"ApiKey":"put your Apikey here"
+},
 "ChatBotConversationsDataBase": {
 "ConnectionString": "mongodb+srv://username:password@cluster0.mongodb.net",
 "DatabaseName": "ChatBotConversations",
 "CollectionName": "Conversation"
 }
-
+the request header name is x-api-key, its value is the value of ApiKey field in the appsettings.json file 
 
 Once configured, the API will automatically connect to your database and allow you to manage conversation history.

@@ -1,5 +1,4 @@
 ﻿version: "3.9"
-
 services:
   chatapi:
     image: "chatapi:latest"
