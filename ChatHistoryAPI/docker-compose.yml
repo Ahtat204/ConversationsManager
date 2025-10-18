@@ -1,18 +1,19 @@
 ﻿version: "3.9"
+
 services:
-  chatapi:
-    image: "chatapi:latest"
-    build: 
+  api:
+    image: "api:1.2"
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:8080"
+      - "8080:80"
     depends_on:
       - mongodb
     environment:
       - MONGO_CONNECTION=mongodb://mongodb:27017
-      - ASP.NETCORE_URLS=https://+:80
-      - ASP.NETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_ENVIRONMENT=Development
       - MongoDB__DatabaseName=ChatBotConversations
       - MongoDB__CollectionName=Conversation
     networks:
@@ -20,15 +21,23 @@ services:
   mongodb:
     image: mongo:7.0
     container_name: mongodb
+    restart: always
+    healthcheck:
+      test: [ "CMD", "mongo", "--quiet", "--eval", "db.runCommand({ ping: 1 }).ok" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     ports:
-      - "27017:27017"
+        - "27017:27017"
     volumes:
-      - mongo-data:/data/db
+        - mongo-data:/data/db
     networks:
-      - app-network
+        - app-network
 
 volumes:
   mongo-data:
-    
+
 networks:
   app-network:
+    driver: bridge
