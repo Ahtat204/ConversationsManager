@@ -44,7 +44,7 @@ Once configured, the API will automatically connect to your database and allow y
 to test the API , you can either clone this repository or ,if you have docker installed , simply run :
 "docker pull lahcen3ahtat/conversations-manager:1.2 " 
 Then, if the image is successfully built, run :
-docker run -d -p 8080:8080 lahcen3ahtat/conversations-manager 
+docker run -d -p 8080:80 lahcen3ahtat/conversations-manager 
 
 example of a json object :
 {
