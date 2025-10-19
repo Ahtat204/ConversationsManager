@@ -1,6 +1,6 @@
 ## 🚀 Gemini Backend API – Conversation History
 
-This backend API service is designed to **store and retrieve conversation history** for your Gemini project, leveraging a **MongoDB** database for persistence.
+This backend API service is designed to **store and retrieve conversation history** for the Gemini project, leveraging a **MongoDB** database for persistence.
 
 -----
 
